@@ -21,7 +21,9 @@ class Vector:
         return self._params[item]
 
     def transform(self, *fns: Callable[['Vector'], 'Vector']) -> 'Vector':
-        ...
+        if len(fns) == 1:
+            return fns[0](self)
+        return fns[0](self).transform(*fns[1:])
 
     def __str__(self):
         return f"Vector([{', '.join([str(param) for param in self._params])}])"
@@ -31,4 +33,4 @@ class Vector:
 
 
 def do_math(v1: Vector, v2: Vector, v3: Vector) -> Vector:
-    return minus(plus(v1, v2), v3)
+    return v1.transform(lambda v: plus(v, v2), lambda v: minus(v, v3))

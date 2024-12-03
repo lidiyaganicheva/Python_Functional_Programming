@@ -13,7 +13,7 @@ class TestCase(unittest.TestCase):
         result = Vector(1, 2, 3).transform(lambda v: Vector(1, 1, 1),
                                            lambda v: Vector(2, 2, 2),
                                            lambda v: Vector(3, 3, 3))
-        self.assertEqual(result, Vector(3, 3, 3), f"{result} should be equal to {Vector(1, 1, 1)}")
+        self.assertEqual(result, Vector(3, 3, 3), f"{result} should be equal to {Vector(3, 3, 3)}")
 
     def test_3(self):
         result = Vector(1, 2, 3).transform(lambda v: Vector(v[0] + 1, v[1] + 1, v[2] + 1))
