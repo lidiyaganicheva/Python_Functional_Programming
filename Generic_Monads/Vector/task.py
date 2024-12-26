@@ -33,4 +33,4 @@ class Vector:
 
 
 def do_math(v1: Vector, v2: Vector, v3: Vector) -> Vector:
-    return v1.transform(lambda v: plus(v, v2), lambda v: minus(v, v3))
+    return v1.transform(partial(plus, v2=v2), partial(minus, v2=v3))
